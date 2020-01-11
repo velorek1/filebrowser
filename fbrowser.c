@@ -1,7 +1,8 @@
 /*====================================================================*/
-/* +ListFiles with double linked list and selection menu in C.
+/* FILE BROWSER
+   +ListFiles with double linked list and selection menu in C.
    +Scroll function added.
-   Last modified : 22/7/2018
+   Last modified : 22/12/2019
    Coded by Velorek.
    Target OS: Linux.                                                  */
 /*====================================================================*/
