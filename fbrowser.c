@@ -179,13 +179,11 @@ char getch() {
   return ch;
 }
 
-//draw window area with shadow
+//draw window area 
 
 void draw_window(int x1, int y1, int x2, int y2, int backcolor) {
   int     i, j;
-  i = x1;
-  j = y1;
-
+  
   //window
   for(j = y1; j <= y2; j++)
     for(i = x1; i <= x2; i++) {
@@ -440,10 +438,10 @@ unselecting previous item
       cleanLine(4, B_BLUE, F_BLUE);
       outputcolor(F_WHITE, B_BLUE);
       gotoxy(6, 3);
-      printf("Index:%d/%d|Memory addr:%p", aux->index,
+      printf("Index:%u/%u|Memory addr:%p", aux->index,
 	     scrollData->listLength - 1, aux);
       gotoxy(6, 4);
-      printf("Scroll Limit: %d|IsScActive?:%d|Path: %s",
+      printf("Scroll Limit: %u|IsScActive?:%u|Path: %s",
 	     scrollControl, scrollData->scrollActive, aux->path);
 
       //Highlight new item
@@ -459,8 +457,8 @@ unselecting previous item
 
 char selectorMenu(LISTCHOICE * aux, SCROLLDATA * scrollData) {
   char    ch=0;
-  unsigned control = 0;
-  unsigned continueScroll=0;
+  int control = 0;
+  int continueScroll=0;
   unsigned counter = 0;
 
   //Go to and select expected item at the beginning
@@ -782,7 +780,8 @@ int main() {
   scrollData.path =NULL;
   scrollData.itemIndex=0;
   //LISTCHOICE *head;		//store head of the list
-
+  gotoxy(1,1);
+  printf("-------> Choose current directory <.> to exit");
   //Directories loop
   do {
     draw_window(9, 7, 31, 19, B_BLACK);	//shadow
@@ -807,7 +806,7 @@ int main() {
     cleanLine(21, B_BLUE, F_BLUE);
     gotoxy(1, 21);
     outputcolor(FH_WHITE, B_BLUE);
-    printf("Item selected: %s | Index: %d | Key : %d\n",
+    printf("Item selected: %s | Index: %u | Key : %u\n",
 	   scrollData.path, scrollData.itemIndex, ch);
 
     if(listBox1 != NULL) {
